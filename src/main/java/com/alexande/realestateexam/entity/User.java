@@ -1,5 +1,6 @@
 package com.alexande.realestateexam.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,9 +29,6 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "uid")
-    private Long uid;
-
     @Column(name = "membership")
     private boolean membership;
 
@@ -38,8 +36,10 @@ public class User {
     private int dailyPractice;
 
     @Column(name = "exam_date")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date examDate;
 
-    @Column(name = "start_date")
-    private Date startDate;
+    @Column(name = "practice_start_date")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    private Date practiceStartDate;
 }

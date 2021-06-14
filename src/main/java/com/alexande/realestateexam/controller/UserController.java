@@ -17,9 +17,21 @@ public class UserController {
         return userService.findUser(theEmail);
     }
 
-    @PutMapping("/updatePractice")
+    @PutMapping("/updateDailyPractice")
     public User updatePractice(@RequestParam("email") String email,
-                               @RequestParam("date") int date) {
-        return userService.updatePractice(email, date);
+                               @RequestParam("practice") int dailyPractice) {
+        return userService.updatePractice(email, dailyPractice);
+    }
+
+    @PutMapping("/updatePracticeStartDate")
+    public User updatePracticeStartDate(@RequestParam("email") String email,
+                               @RequestParam("date") String practiceDate) {
+        return userService.updatePracticeStartDate(email, practiceDate);
+    }
+
+    @PutMapping("/updateExamStartDate")
+    public User updateExamStartDate(@RequestParam("email") String email,
+                                        @RequestParam("date") String examDate) {
+        return userService.updateExamStartDate(email, examDate);
     }
 }
