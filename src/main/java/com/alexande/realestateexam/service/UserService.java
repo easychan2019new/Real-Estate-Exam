@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    User findUser(String email);
-    User createUser(String email);
-    User updatePractice(String email, int dailyPractice);
-    User updatePracticeStartDate(String email, String practiceStartDate);
-    User updateExamStartDate(String email, String examStartDate);
+    User findUser(String uid);
+    User createUser(String uid);
+    User updatePractice(String uid, int dailyPractice);
+    User updatePracticeStartDate(String uid, String practiceStartDate);
+    User updateExamStartDate(String uid, String examStartDate);
 }

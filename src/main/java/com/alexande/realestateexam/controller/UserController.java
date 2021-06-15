@@ -5,7 +5,7 @@ import com.alexande.realestateexam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @RestController
 public class UserController {
 
@@ -13,25 +13,25 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/findUser")
-    public User findUser(@RequestParam("email") String theEmail) {
-        return userService.findUser(theEmail);
+    public User findUser(@RequestParam("uid") String uid) {
+        return userService.findUser(uid);
     }
 
     @PutMapping("/updateDailyPractice")
-    public User updatePractice(@RequestParam("email") String email,
+    public User updatePractice(@RequestParam("uid") String uid,
                                @RequestParam("practice") int dailyPractice) {
-        return userService.updatePractice(email, dailyPractice);
+        return userService.updatePractice(uid, dailyPractice);
     }
 
     @PutMapping("/updatePracticeStartDate")
-    public User updatePracticeStartDate(@RequestParam("email") String email,
+    public User updatePracticeStartDate(@RequestParam("uid") String uid,
                                @RequestParam("date") String practiceDate) {
-        return userService.updatePracticeStartDate(email, practiceDate);
+        return userService.updatePracticeStartDate(uid, practiceDate);
     }
 
     @PutMapping("/updateExamStartDate")
-    public User updateExamStartDate(@RequestParam("email") String email,
+    public User updateExamStartDate(@RequestParam("uid") String uid,
                                         @RequestParam("date") String examDate) {
-        return userService.updateExamStartDate(email, examDate);
+        return userService.updateExamStartDate(uid, examDate);
     }
 }

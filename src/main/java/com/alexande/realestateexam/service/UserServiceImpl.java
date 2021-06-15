@@ -18,24 +18,24 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User findUser(String email) {
-        User theUser = userRepository.findByEmail(email);
+    public User findUser(String uid) {
+        User theUser = userRepository.findByUid(uid);
         if (theUser == null) {
-            return createUser(email);
+            return createUser(uid);
         }
         return theUser;
     }
 
     @Override
-    public User createUser(String email) {
+    public User createUser(String uid) {
         User user = new User();
-        user.setEmail(email);
+        user.setUid(uid);
         // set up the default firstName and lastName
-        user.setFirstName("Best");
-        user.setLastName("Guy");
+        user.setName("BestGuy");
         // set up the default question and Date
         int dailyPractice = 150;
         user.setDailyPractice(dailyPractice);
+        user.setEmail("sample@mail.com");
         Date date = new Date();
         user.setExamDate(date);
         user.setPracticeStartDate(date);
@@ -46,16 +46,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updatePractice(String email, int dailyPractice) {
-        User user = userRepository.findByEmail(email);
+    public User updatePractice(String uid, int dailyPractice) {
+        User user = userRepository.findByUid(uid);
         user.setDailyPractice(dailyPractice);
         userRepository.save(user);
         return user;
     }
 
     @Override
-    public User updatePracticeStartDate(String email, String practiceStartDate) {
-        User user = userRepository.findByEmail(email);
+    public User updatePracticeStartDate(String uid, String practiceStartDate) {
+        User user = userRepository.findByUid(uid);
         DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         try {
@@ -69,8 +69,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateExamStartDate(String email, String examStartDate) {
-        User user = userRepository.findByEmail(email);
+    public User updateExamStartDate(String uid, String examStartDate) {
+        User user = userRepository.findByUid(uid);
         DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         try {
