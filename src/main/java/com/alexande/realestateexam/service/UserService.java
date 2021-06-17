@@ -1,9 +1,7 @@
 package com.alexande.realestateexam.service;
 
 import com.alexande.realestateexam.entity.User;
-import org.springframework.stereotype.Service;
 
-@Service
 public interface UserService {
     User findUser(String uid);
     User createUser(String uid);
