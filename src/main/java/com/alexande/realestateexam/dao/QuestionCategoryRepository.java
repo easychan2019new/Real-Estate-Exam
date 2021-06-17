@@ -10,5 +10,6 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface QuestionCategoryRepository extends JpaRepository<QuestionCategory, Long> {
+    List<QuestionCategory> findAll();
     QuestionCategory findByCategoryName(String category);
 }

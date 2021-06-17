@@ -15,6 +15,11 @@ public class QuestionCategoryServiceImpl implements QuestionCategoryService{
     private QuestionCategoryRepository questionCategoryRepository;
 
     @Override
+    public List<QuestionCategory> findAll() {
+        return questionCategoryRepository.findAll();
+    }
+
+    @Override
     public QuestionCategory findByCategoryName(String name) {
         return questionCategoryRepository.findByCategoryName(name);
     }

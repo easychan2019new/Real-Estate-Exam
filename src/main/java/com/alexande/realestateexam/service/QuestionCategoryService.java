@@ -9,5 +9,6 @@ import java.util.List;
 
 @Service
 public interface QuestionCategoryService {
+    List<QuestionCategory> findAll();
     QuestionCategory findByCategoryName(String category);
 }

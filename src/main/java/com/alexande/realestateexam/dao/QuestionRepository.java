@@ -17,6 +17,8 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findAll();
 
     List<Question> findByCategoryId(int id);
-    //@Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = ?1", nativeQuery = true)
-    //List<Question> findByCategoryId(@RequestParam("id") Long id);
+
+    //@Query(value = "SELECT u FROM Question u ORDER BY id")
+    @Query(value = "SELECT * FROM question ORDER BY RAND() LIMIT 2", nativeQuery = true)
+    List<Question> findForExam();
 }

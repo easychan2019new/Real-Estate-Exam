@@ -22,6 +22,12 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public List<Question> findForExam() {
+        List<Question> list = questionRepository.findForExam();
+        return list;
+    }
+
+    @Override
     public List<Question> findByCategoryId(int id) {
         List<Question> list = questionRepository.findByCategoryId(id);
         return list;

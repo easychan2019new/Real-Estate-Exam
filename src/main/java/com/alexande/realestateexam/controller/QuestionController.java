@@ -25,8 +25,8 @@ public class QuestionController {
         return questionService.findAll();
     }
 
-//    @GetMapping("findByCategoryName")
-//    public List<Question> findByCategoryName(@RequestParam("category") String category) {
-//        return questionService.findByCategoryName(category);
-//    }
+    @GetMapping("/findForExam")
+    public List<Question> findForExam() {
+        return questionService.findForExam();
+    }
 }
