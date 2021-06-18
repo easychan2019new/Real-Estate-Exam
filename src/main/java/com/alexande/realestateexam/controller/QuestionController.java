@@ -25,8 +25,13 @@ public class QuestionController {
         return questionService.findAll();
     }
 
-    @GetMapping("/findForExam")
-    public List<Question> findForExam() {
-        return questionService.findForExam();
+    @GetMapping("/findForQuiz")
+    public List<Question> findForQuiz() {
+        return questionService.findForQuiz();
+    }
+
+    @GetMapping("/findByCategoryId")
+    public List<Question> findByCategoryId(@RequestParam("id") int id) {
+        return questionService.findByCategoryId(id);
     }
 }

@@ -22,8 +22,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> findForExam() {
-        List<Question> list = questionRepository.findForExam();
+    public List<Question> findForQuiz() {
+        List<Question> list = questionRepository.findForQuiz();
         return list;
     }
 

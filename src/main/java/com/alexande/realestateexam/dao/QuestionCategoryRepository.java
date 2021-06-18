@@ -1,9 +1,7 @@
 package com.alexande.realestateexam.dao;
 
-import com.alexande.realestateexam.entity.Question;
 import com.alexande.realestateexam.entity.QuestionCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
