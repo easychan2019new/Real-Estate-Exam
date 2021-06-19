@@ -12,6 +12,8 @@ import java.util.List;
 public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findAll();
 
+    Question findById(@Param("id") int id);
+
     @Query(value = "SELECT * FROM question ORDER BY RAND() LIMIT 10", nativeQuery = true)
     List<Question> findForQuiz();
 
