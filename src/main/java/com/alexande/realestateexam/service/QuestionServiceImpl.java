@@ -22,8 +22,9 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Optional<Question> findById(Long id) {
-        Optional<Question> q = questionRepository.findById(id);
+    public Question findById(int id) {
+
+        Question q = questionRepository.getQuestion(id);
         return q;
     }
 

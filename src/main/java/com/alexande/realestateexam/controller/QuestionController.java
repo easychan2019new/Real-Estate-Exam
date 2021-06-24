@@ -25,7 +25,7 @@ public class QuestionController {
     }
 
     @GetMapping("/findById")
-    public Optional<Question> findById(@RequestParam("id") Long id) {
+    public Question findById(@RequestParam("id") int id) {
         return questionService.findById(id);
     }
 

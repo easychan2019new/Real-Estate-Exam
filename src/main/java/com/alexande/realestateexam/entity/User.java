@@ -5,8 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -47,13 +46,5 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "question_id")
     )
-    private Set<Question> saveList;
-
-//    public void saveQuestion(Question questionSaved) {
-//        if (saveList == null) {
-//            saveList = new HashSet<>();
-//        }
-//        saveList.add(questionSaved);
-//        questionSaved.setUser(this);
-//    }
+    private List<Question> saveList;
 }

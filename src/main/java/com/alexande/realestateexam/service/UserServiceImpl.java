@@ -3,7 +3,6 @@ package com.alexande.realestateexam.service;
 import com.alexande.realestateexam.dao.QuestionRepository;
 import com.alexande.realestateexam.dao.UserRepository;
 import com.alexande.realestateexam.entity.Question;
-import com.alexande.realestateexam.entity.QuestionSaved;
 import com.alexande.realestateexam.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -87,12 +85,14 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-//    @Override
-//    public User saveQuestion(String uid, int qid) {
-//        User user = userRepository.findByUid(uid);
-//        Question question = questionRepository.findById(qid);
-//        user.getSaveList().add(question);
-//        userRepository.save(user);
-//        return user;
-//    }
+    @Override
+    public User saveQuestion(String uid, int qid) {
+        User user = userRepository.findByUid(uid);
+        Question question = questionRepository.getQuestion(qid);
+        if (!user.getSaveList().contains(question)) {
+            user.getSaveList().add(question);
+        }
+        userRepository.save(user);
+        return user;
+    }
 }

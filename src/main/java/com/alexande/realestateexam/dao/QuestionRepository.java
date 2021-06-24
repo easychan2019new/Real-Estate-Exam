@@ -13,7 +13,8 @@ import java.util.Optional;
 public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findAll();
 
-    Optional<Question> findById(Long id);
+    @Query(value = "SELECT * FROM question WHERE id = :#{#id}", nativeQuery = true)
+    Question getQuestion(@Param("id") int id);
 
     @Query(value = "SELECT * FROM question ORDER BY RAND() LIMIT 10", nativeQuery = true)
     List<Question> findForQuiz();

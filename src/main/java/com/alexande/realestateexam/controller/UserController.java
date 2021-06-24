@@ -40,9 +40,9 @@ public class UserController {
         return userService.createUser(uid);
     }
 
-//    @PostMapping("/saveQuestion")
-//    public User saveQuestion(@RequestParam("uid") String uid,
-//                                @RequestParam("qid") Long qid) {
-//        return userService.saveQuestion(uid, qid);
-//    }
+    @PostMapping("/saveQuestion")
+    public User saveQuestion(@RequestParam("uid") String uid,
+                                @RequestParam("qid") int qid) {
+        return userService.saveQuestion(uid, qid);
+    }
 }

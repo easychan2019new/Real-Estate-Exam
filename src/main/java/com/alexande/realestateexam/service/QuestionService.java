@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface QuestionService {
     List<Question> findAll();
 
-    Optional<Question> findById(Long id);
+    Question findById(int id);
 
     List<Question> findByCategoryId(int id);
 
