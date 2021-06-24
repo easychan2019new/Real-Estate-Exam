@@ -9,4 +9,5 @@ public interface UserService {
     User updatePracticeStartDate(String uid, String practiceStartDate);
     User updateExamStartDate(String uid, String examStartDate);
     User saveQuestion(String uid, int qid);
+    User deleteQuestion(String uid, int qid);
 }

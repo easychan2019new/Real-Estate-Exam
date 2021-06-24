@@ -45,4 +45,10 @@ public class UserController {
                                 @RequestParam("qid") int qid) {
         return userService.saveQuestion(uid, qid);
     }
+
+    @PostMapping("/deleteQuestion")
+    public User deleteQuestion(@RequestParam("uid") String uid,
+                             @RequestParam("qid") int qid) {
+        return userService.deleteQuestion(uid,qid);
+    }
 }

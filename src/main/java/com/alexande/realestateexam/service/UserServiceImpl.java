@@ -95,4 +95,13 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return user;
     }
+
+    @Override
+    public User deleteQuestion(String uid, int qid) {
+        User user = userRepository.findByUid(uid);
+        Question question = questionRepository.getQuestion(qid);
+        user.getSaveList().remove(question);
+        userRepository.save(user);
+        return user;
+    }
 }
