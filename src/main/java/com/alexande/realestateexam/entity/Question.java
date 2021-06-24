@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "question")
@@ -45,5 +46,9 @@ public class Question {
     //@JsonIgnoreProperties({"questionList"})
     @JsonIgnore
     private QuestionCategory questionCategory;
+
+    @ManyToMany(mappedBy = "saveList")
+    @JsonIgnore
+    Set<User> targetUser;
 
 }

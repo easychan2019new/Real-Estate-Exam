@@ -5,6 +5,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -16,26 +18,42 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "email", nullable = false)
-    private String email;
-
     @Column(name = "membership")
     private boolean membership;
 
     @Column(name = "daily_practice")
     private int dailyPractice;
 
-    @Column(name = "exam_date")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    private Date examDate;
+    @Column(name = "target_practice")
+    private int targetPractice;
+
+    @Column(name = "total_practice")
+    private int totalPractice;
+
+    @Column(name = "exam_start_date")
+    @JsonFormat(timezone = "EST+8", pattern = "yyyy-MM-dd")
+    private Date examStartDate;
 
     @Column(name = "practice_start_date")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @JsonFormat(timezone = "EST+8", pattern = "yyyy-MM-dd")
     private Date practiceStartDate;
 
     @Column(name = "uid", nullable = false)
     private String uid;
+
+    @ManyToMany
+    @JoinTable(
+            name = "question_saved",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "question_id")
+    )
+    private Set<Question> saveList;
+
+//    public void saveQuestion(Question questionSaved) {
+//        if (saveList == null) {
+//            saveList = new HashSet<>();
+//        }
+//        saveList.add(questionSaved);
+//        questionSaved.setUser(this);
+//    }
 }

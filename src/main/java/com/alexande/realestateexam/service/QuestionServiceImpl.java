@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -19,6 +19,12 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> findAll() {
         List<Question> list = questionRepository.findAll();
         return list;
+    }
+
+    @Override
+    public Optional<Question> findById(Long id) {
+        Optional<Question> q = questionRepository.findById(id);
+        return q;
     }
 
     @Override

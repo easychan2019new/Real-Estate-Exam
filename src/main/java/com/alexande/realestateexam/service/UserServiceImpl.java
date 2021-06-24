@@ -1,15 +1,21 @@
 package com.alexande.realestateexam.service;
 
+import com.alexande.realestateexam.dao.QuestionRepository;
 import com.alexande.realestateexam.dao.UserRepository;
+import com.alexande.realestateexam.entity.Question;
+import com.alexande.realestateexam.entity.QuestionSaved;
 import com.alexande.realestateexam.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -17,29 +23,27 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private QuestionRepository questionRepository;
+
     @Override
     public User findUser(String uid) {
         User theUser = userRepository.findByUid(uid);
-        if (theUser == null) {
-            return createUser(uid);
-        }
         return theUser;
     }
 
     @Override
+    @Transactional
     public User createUser(String uid) {
         User user = new User();
         user.setUid(uid);
-        // set up the default firstName and lastName
-        user.setName("BestGuy");
-        // set up the default question and Date
-        int dailyPractice = 150;
-        user.setDailyPractice(dailyPractice);
-        user.setEmail("sample@mail.com");
-        Date date = new Date();
-        user.setExamDate(date);
-        user.setPracticeStartDate(date);
-        // set up default membership
+        // set up the default value
+        user.setDailyPractice(0);
+        user.setTargetPractice(150);
+        user.setTotalPractice(0);
+        user.setExamStartDate(new Date());
+        user.setPracticeStartDate(new Date());
+        user.setMembership(false);
 
         userRepository.save(user);
         return user;
@@ -78,8 +82,17 @@ public class UserServiceImpl implements UserService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        user.setExamDate(date);
+        user.setExamStartDate(date);
         userRepository.save(user);
         return user;
     }
+
+//    @Override
+//    public User saveQuestion(String uid, int qid) {
+//        User user = userRepository.findByUid(uid);
+//        Question question = questionRepository.findById(qid);
+//        user.getSaveList().add(question);
+//        userRepository.save(user);
+//        return user;
+//    }
 }

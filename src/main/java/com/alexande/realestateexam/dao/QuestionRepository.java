@@ -7,12 +7,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
+import java.util.Optional;
 
 @RepositoryRestResource
 public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findAll();
 
-    Question findById(@Param("id") int id);
+    Optional<Question> findById(Long id);
 
     @Query(value = "SELECT * FROM question ORDER BY RAND() LIMIT 10", nativeQuery = true)
     List<Question> findForQuiz();

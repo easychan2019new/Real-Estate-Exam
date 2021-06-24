@@ -34,4 +34,15 @@ public class UserController {
                                         @RequestParam("date") String examDate) {
         return userService.updateExamStartDate(uid, examDate);
     }
+
+    @PostMapping("/createUser")
+    public User createUser(@RequestParam("uid") String uid) {
+        return userService.createUser(uid);
+    }
+
+//    @PostMapping("/saveQuestion")
+//    public User saveQuestion(@RequestParam("uid") String uid,
+//                                @RequestParam("qid") Long qid) {
+//        return userService.saveQuestion(uid, qid);
+//    }
 }
