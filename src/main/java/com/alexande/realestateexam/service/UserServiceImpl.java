@@ -13,6 +13,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 
 @Service
@@ -103,5 +105,22 @@ public class UserServiceImpl implements UserService {
         user.getSaveList().remove(question);
         userRepository.save(user);
         return user;
+    }
+
+    @Override
+    public List<Question> getSavedQuestion(String uid) {
+        User user = userRepository.findByUid(uid);
+        return user.getSaveList();
+    }
+
+    @Override
+    public List<Long> getSavedQuestionId(String uid) {
+        User user = userRepository.findByUid(uid);
+        List<Question> questionList = user.getSaveList();
+        List<Long> questionID = new LinkedList<>();
+        for(Question question: questionList) {
+            questionID.add(question.getId());
+        }
+        return questionID;
     }
 }
