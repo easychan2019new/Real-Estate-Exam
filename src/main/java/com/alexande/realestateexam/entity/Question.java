@@ -17,8 +17,11 @@ public class Question {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "question")
-    private String question;
+    @Column(name = "question_type")
+    private String questionType;
+
+    @Column(name = "question_name")
+    private String questionName;
 
     @Column(name = "answer_1")
     private String answer_1;
