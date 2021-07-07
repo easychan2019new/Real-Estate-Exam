@@ -49,4 +49,7 @@ public class User {
     )
     @JsonIgnore
     private List<Question> saveList;
+
+    @OneToMany(mappedBy = "examOwner", cascade = CascadeType.ALL)
+    private List<Exam> examList;
 }
