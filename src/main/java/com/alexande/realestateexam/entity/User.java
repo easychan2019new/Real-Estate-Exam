@@ -51,5 +51,6 @@ public class User {
     private List<Question> saveList;
 
     @OneToMany(mappedBy = "examOwner", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Exam> examList;
 }

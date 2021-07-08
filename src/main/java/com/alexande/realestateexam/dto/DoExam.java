@@ -9,11 +9,10 @@ import java.util.List;
 
 @Data
 public class DoExam {
+
     private String uid;
 
-    @JsonFormat(timezone = "EST+8", pattern = "yyyy-MM-dd")
-    private Date date;
-
     private int score;
-    //private List<RecordQuestion> recordQuestions;
+
+    private List<RecordQuestion> recordQuestions;
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -54,4 +55,7 @@ public class Question {
     @JsonIgnore
     Set<User> targetUser;
 
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @JsonIgnore
+    Set<ExamQuestion> examQuestions  = new HashSet<ExamQuestion>();
 }

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class RecordQuestion {
-    int id;
+    int qid;
     String choice;
 }

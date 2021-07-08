@@ -6,6 +6,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "exam")
@@ -29,4 +31,8 @@ public class Exam {
     //@JsonIgnoreProperties({"examList"})
     @JsonIgnore
     private User examOwner;
+
+    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL)
+    @JsonIgnore
+    Set<ExamQuestion> examQuestions = new HashSet<ExamQuestion>();
 }
