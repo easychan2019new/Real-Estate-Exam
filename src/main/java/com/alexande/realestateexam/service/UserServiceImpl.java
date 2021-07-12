@@ -41,8 +41,7 @@ public class UserServiceImpl implements UserService {
         user.setDailyPractice(0);
         user.setTargetPractice(150);
         user.setTotalPractice(0);
-        user.setExamStartDate(new Date());
-        user.setPracticeStartDate(new Date());
+        user.setRegisterDate(new Date());
         user.setMembership(false);
 
         userRepository.save(user);
@@ -50,9 +49,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updatePractice(String uid, int dailyPractice) {
+    public User updateTargetPractice(String uid, int targetPractice) {
         User user = userRepository.findByUid(uid);
-        user.setDailyPractice(dailyPractice);
+        user.setTargetPractice(targetPractice);
         userRepository.save(user);
         return user;
     }
@@ -122,5 +121,19 @@ public class UserServiceImpl implements UserService {
             questionID.add(question.getId());
         }
         return questionID;
+    }
+
+    @Override
+    public String addPractice(String uid) {
+        try {
+            User user = userRepository.findByUid(uid);
+            user.setDailyPractice(user.getDailyPractice() + 1);
+            user.setTotalPractice(user.getTotalPractice() + 1);
+            userRepository.save(user);
+        } catch (Exception e) {
+            return "add Practice fail!";
+        }
+
+        return "add Practice successful!";
     }
 }

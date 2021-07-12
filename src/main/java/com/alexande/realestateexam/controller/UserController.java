@@ -20,10 +20,10 @@ public class UserController {
         return userService.findUser(uid);
     }
 
-    @PutMapping("/updateDailyPractice")
-    public User updatePractice(@RequestParam("uid") String uid,
-                               @RequestParam("practice") int dailyPractice) {
-        return userService.updatePractice(uid, dailyPractice);
+    @PutMapping("/updateTargetPractice")
+    public User updateTargetPractice(@RequestParam("uid") String uid,
+                               @RequestParam("practice") int targetPractice) {
+        return userService.updateTargetPractice(uid, targetPractice);
     }
 
     @PutMapping("/updatePracticeStartDate")
@@ -36,6 +36,11 @@ public class UserController {
     public User updateExamStartDate(@RequestParam("uid") String uid,
                                         @RequestParam("date") String examDate) {
         return userService.updateExamStartDate(uid, examDate);
+    }
+
+    @PostMapping("/addPractice")
+    public String addDailyPractice(@RequestParam("uid") String uid) {
+        return userService.addPractice(uid);
     }
 
     @PostMapping("/createUser")

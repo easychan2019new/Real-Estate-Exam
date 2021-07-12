@@ -38,6 +38,13 @@ public class User {
     @JsonFormat(timezone = "EST+8", pattern = "yyyy-MM-dd")
     private Date practiceStartDate;
 
+    @Column(name = "register_date")
+    @JsonFormat(timezone = "EST+8", pattern = "yyyy-MM-dd")
+    private Date registerDate;
+
+    @Column(name = "total_study_day")
+    private int totalStudyDay;
+
     @Column(name = "uid", nullable = false)
     private String uid;
 
