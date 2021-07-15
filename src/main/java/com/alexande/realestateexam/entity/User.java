@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,15 +32,15 @@ public class User {
     private int totalPractice;
 
     @Column(name = "exam_start_date")
-    @JsonFormat(timezone = "EST+8", pattern = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT-4", pattern = "yyyy-MM-dd")
     private Date examStartDate;
 
     @Column(name = "practice_start_date")
-    @JsonFormat(timezone = "EST+8", pattern = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT-4", pattern = "yyyy-MM-dd")
     private Date practiceStartDate;
 
     @Column(name = "register_date")
-    @JsonFormat(timezone = "EST+8", pattern = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT-4", pattern = "yyyy-MM-dd")
     private Date registerDate;
 
     @Column(name = "total_study_day")
@@ -57,7 +58,8 @@ public class User {
     @JsonIgnore
     private List<Question> saveList;
 
+
     @OneToMany(mappedBy = "examOwner", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Exam> examList;
+    private List<ExamData> examDataList = new ArrayList<>();
 }
