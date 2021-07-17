@@ -10,7 +10,9 @@ public interface UserService {
     User createUser(String uid);
     User updateTargetPractice(String uid, int targetPractice);
     User updatePracticeStartDate(String uid, String practiceStartDate);
+    User setNullPracticeStartDate(String uid);
     User updateExamStartDate(String uid, String examStartDate);
+    User setNullExamStartDate(String uid);
     User saveQuestion(String uid, int qid);
     User deleteQuestion(String uid, int qid);
     List<Question> getSavedQuestion(String uid);

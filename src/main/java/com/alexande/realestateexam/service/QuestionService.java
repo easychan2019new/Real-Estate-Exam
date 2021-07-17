@@ -13,4 +13,6 @@ public interface QuestionService {
     List<Question> findByCategoryId(int id);
 
     List<Question> findForQuiz();
+
+    List<Question> findForExam();
 }

@@ -33,6 +33,11 @@ public class QuestionController {
         return questionService.findForQuiz();
     }
 
+    @GetMapping("/findForExam")
+    public List<Question> findForExam() {
+        return questionService.findForExam();
+    }
+
     @GetMapping("/findByCategoryId")
     public List<Question> findByCategoryId(@RequestParam("id") int id) {
         return questionService.findByCategoryId(id);

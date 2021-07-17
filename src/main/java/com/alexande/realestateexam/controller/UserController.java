@@ -32,10 +32,20 @@ public class UserController {
         return userService.updatePracticeStartDate(uid, practiceDate);
     }
 
+    @PutMapping("/setNullPracticeStartDate")
+    public User setNullPracticeStartDate(@RequestParam("uid") String uid) {
+        return userService.setNullPracticeStartDate(uid);
+    }
+
     @PutMapping("/updateExamStartDate")
     public User updateExamStartDate(@RequestParam("uid") String uid,
                                         @RequestParam("date") String examDate) {
         return userService.updateExamStartDate(uid, examDate);
+    }
+
+    @PutMapping("/setNullExamStartDate")
+    public User setNullExamStartDate(@RequestParam("uid") String uid) {
+        return userService.setNullExamStartDate(uid);
     }
 
     @PostMapping("/addPractice")

@@ -7,5 +7,4 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUid(String uid);
-    User findByMembership(String b);
 }

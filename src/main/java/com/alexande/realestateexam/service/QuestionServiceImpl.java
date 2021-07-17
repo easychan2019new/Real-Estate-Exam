@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -17,27 +16,28 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public List<Question> findAll() {
-        List<Question> list = questionRepository.findAll();
-        return list;
+        return questionRepository.findAll();
     }
 
     @Override
     public Question findById(int id) {
 
-        Question q = questionRepository.getQuestion(id);
-        return q;
+        return questionRepository.getQuestion(id);
     }
 
     @Override
     public List<Question> findForQuiz() {
-        List<Question> list = questionRepository.findForQuiz();
-        return list;
+        return questionRepository.findForQuiz();
+    }
+
+    @Override
+    public List<Question> findForExam() {
+        return questionRepository.findForExam();
     }
 
     @Override
     public List<Question> findByCategoryId(int id) {
-        List<Question> list = questionRepository.findByCategoryId(id);
-        return list;
+        return questionRepository.findByCategoryId(id);
     }
 
 //    @Override

@@ -72,17 +72,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User setNullPracticeStartDate(String uid) {
+        User user = userRepository.findByUid(uid);
+        user.setPracticeStartDate(null);
+        return user;
+    }
+
+    @Override
     public User updateExamStartDate(String uid, String examStartDate) {
         User user = userRepository.findByUid(uid);
-        DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         try {
             date = fmt.parse(examStartDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         user.setExamStartDate(date);
         userRepository.save(user);
+        return user;
+    }
+
+    @Override
+    public User setNullExamStartDate(String uid) {
+        User user = userRepository.findByUid(uid);
+        user.setExamStartDate(null);
         return user;
     }
 
