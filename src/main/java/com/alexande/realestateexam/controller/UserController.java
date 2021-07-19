@@ -1,5 +1,6 @@
 package com.alexande.realestateexam.controller;
 
+import com.alexande.realestateexam.entity.Dictionary;
 import com.alexande.realestateexam.entity.Question;
 import com.alexande.realestateexam.entity.User;
 import com.alexande.realestateexam.service.UserService;
@@ -78,5 +79,27 @@ public class UserController {
     @GetMapping("/getSavedQuestionId")
     public List<Long> getSavedQuestionId(@RequestParam("uid") String uid) {
         return userService.getSavedQuestionId(uid);
+    }
+
+    @PostMapping("/saveDictionary")
+    public User saveDictionary(@RequestParam("uid") String uid,
+                             @RequestParam("did") Long did) {
+        return userService.saveDictionary(uid, did);
+    }
+
+    @PostMapping("/deleteDictionary")
+    public User deleteDictionary(@RequestParam("uid") String uid,
+                               @RequestParam("did") Long did) {
+        return userService.deleteDictionary(uid, did);
+    }
+
+    @GetMapping("/getSavedDictionary")
+    public List<Dictionary> getSavedDictionary(@RequestParam("uid") String uid) {
+        return userService.getSavedDictionary(uid);
+    }
+
+    @GetMapping("/getSavedDictionaryId")
+    public List<Long> getSavedDictionaryId(@RequestParam("uid") String uid) {
+        return userService.getSavedDictionaryId(uid);
     }
 }

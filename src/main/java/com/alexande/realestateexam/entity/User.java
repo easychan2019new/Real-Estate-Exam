@@ -59,6 +59,15 @@ public class User {
     private List<Question> saveList;
 
 
+    @ManyToMany
+    @JoinTable(
+            name = "dictionary_saved",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "dictionary_id")
+    )
+    //@JsonIgnore
+    private List<Dictionary> dictionaryList;
+
     @OneToMany(mappedBy = "examOwner", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ExamData> examDataList = new ArrayList<>();

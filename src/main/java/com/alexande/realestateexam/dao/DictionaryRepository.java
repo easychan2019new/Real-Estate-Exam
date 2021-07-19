@@ -1,13 +1,10 @@
 package com.alexande.realestateexam.dao;
 
-import com.alexande.realestateexam.entity.User;
+import com.alexande.realestateexam.entity.Dictionary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import java.util.List;
-
 @RepositoryRestResource
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUid(String uid);
-    List<User> findAll();
+public interface DictionaryRepository extends JpaRepository<Dictionary, Long> {
+    Dictionary findDictionaryById(Long did);
 }

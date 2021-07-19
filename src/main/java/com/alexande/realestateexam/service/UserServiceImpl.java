@@ -1,7 +1,9 @@
 package com.alexande.realestateexam.service;
 
+import com.alexande.realestateexam.dao.DictionaryRepository;
 import com.alexande.realestateexam.dao.QuestionRepository;
 import com.alexande.realestateexam.dao.UserRepository;
+import com.alexande.realestateexam.entity.Dictionary;
 import com.alexande.realestateexam.entity.Question;
 import com.alexande.realestateexam.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private QuestionRepository questionRepository;
 
+    @Autowired
+    private DictionaryRepository dictionaryRepository;
+
     @Override
     public User findUser(String uid) {
-        User theUser = userRepository.findByUid(uid);
-        return theUser;
+        return userRepository.findByUid(uid);
     }
 
     @Override
@@ -136,6 +140,43 @@ public class UserServiceImpl implements UserService {
             questionID.add(question.getId());
         }
         return questionID;
+    }
+
+    @Override
+    public User saveDictionary(String uid, Long did) {
+        User user = userRepository.findByUid(uid);
+        Dictionary dictionary = dictionaryRepository.findDictionaryById(did);
+        if (!user.getDictionaryList().contains(dictionary)) {
+            user.getDictionaryList().add(dictionary);
+        }
+        userRepository.save(user);
+        return user;
+    }
+
+    @Override
+    public User deleteDictionary(String uid, Long did) {
+        User user = userRepository.findByUid(uid);
+        Dictionary dictionary = dictionaryRepository.findDictionaryById(did);
+        user.getDictionaryList().remove(dictionary);
+        userRepository.save(user);
+        return user;
+    }
+
+    @Override
+    public List<Dictionary> getSavedDictionary(String uid) {
+        User user = userRepository.findByUid(uid);
+        return user.getDictionaryList();
+    }
+
+    @Override
+    public List<Long> getSavedDictionaryId(String uid) {
+        User user = userRepository.findByUid(uid);
+        List<Dictionary> dictionaryList = user.getDictionaryList();
+        List<Long> dictionaryId = new LinkedList<>();
+        for(Dictionary dictionary: dictionaryList) {
+            dictionaryId.add(dictionary.getId());
+        }
+        return dictionaryId;
     }
 
     @Override
