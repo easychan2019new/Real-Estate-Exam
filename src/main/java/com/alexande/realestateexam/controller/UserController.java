@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/addPractice")
-    public String addDailyPractice(@RequestParam("uid") String uid) {
+    public User addDailyPractice(@RequestParam("uid") String uid) {
         return userService.addPractice(uid);
     }
 

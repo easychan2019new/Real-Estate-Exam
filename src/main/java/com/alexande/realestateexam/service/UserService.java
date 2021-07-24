@@ -27,5 +27,5 @@ public interface UserService {
     List<Dictionary> getSavedDictionary(String uid);
     List<Long> getSavedDictionaryId(String uid);
 
-    String addPractice(String uid);
+    User addPractice(String uid);
 }

@@ -32,15 +32,15 @@ public class User {
     private int totalPractice;
 
     @Column(name = "exam_start_date")
-    @JsonFormat(timezone = "GMT-4", pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date examStartDate;
 
     @Column(name = "practice_start_date")
-    @JsonFormat(timezone = "GMT-4", pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date practiceStartDate;
 
     @Column(name = "register_date")
-    @JsonFormat(timezone = "GMT-4", pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date registerDate;
 
     @Column(name = "total_study_day")
@@ -65,7 +65,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "dictionary_id")
     )
-    //@JsonIgnore
+    @JsonIgnore
     private List<Dictionary> dictionaryList;
 
     @OneToMany(mappedBy = "examOwner", cascade = CascadeType.ALL)

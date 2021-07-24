@@ -22,7 +22,7 @@ public class ExamData {
     private Long id;
 
     @Column(name = "date")
-    @JsonFormat(timezone = "GMT-4", pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date examDate;
 
     @Column(name = "score_low")

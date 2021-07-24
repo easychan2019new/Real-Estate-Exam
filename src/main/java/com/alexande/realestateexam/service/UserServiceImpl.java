@@ -14,13 +14,14 @@ import javax.transaction.Transactional;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.logging.Logger;
 
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    Logger logger = Logger.getLogger("LoggingDemo");
 
     @Autowired
     private UserRepository userRepository;
@@ -45,6 +46,18 @@ public class UserServiceImpl implements UserService {
         user.setDailyPractice(0);
         user.setTargetPractice(150);
         user.setTotalPractice(0);
+
+        // set the default exam_start_date and practice_start_date
+        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        try {
+            date = fmt.parse("1970-01-01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        user.setPracticeStartDate(date);
+        user.setExamStartDate(date);
         user.setRegisterDate(new Date());
         user.setMembership(false);
 
@@ -63,7 +76,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updatePracticeStartDate(String uid, String practiceStartDate) {
         User user = userRepository.findByUid(uid);
-        DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd" );
         Date date = new Date();
         try {
             date = fmt.parse(practiceStartDate);
@@ -78,14 +91,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public User setNullPracticeStartDate(String uid) {
         User user = userRepository.findByUid(uid);
-        user.setPracticeStartDate(null);
+
+        // set the user's practice_start_date to "1970-01-01"
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd" );
+        Date date = new Date();
+        try {
+            date = fmt.parse("1970-01-01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        user.setPracticeStartDate(date);
+        userRepository.save(user);
         return user;
     }
 
     @Override
     public User updateExamStartDate(String uid, String examStartDate) {
         User user = userRepository.findByUid(uid);
-        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd" );
         Date date = new Date();
         try {
             date = fmt.parse(examStartDate);
@@ -101,7 +124,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User setNullExamStartDate(String uid) {
         User user = userRepository.findByUid(uid);
-        user.setExamStartDate(null);
+
+        // set the user's exam_start_date to "1970-01-01"
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd" );
+        Date date = new Date();
+        try {
+            date = fmt.parse("1970-01-01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        user.setExamStartDate(date);
+        userRepository.save(user);
         return user;
     }
 
@@ -180,16 +213,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String addPractice(String uid) {
-        try {
-            User user = userRepository.findByUid(uid);
-            user.setDailyPractice(user.getDailyPractice() + 1);
-            user.setTotalPractice(user.getTotalPractice() + 1);
-            userRepository.save(user);
-        } catch (Exception e) {
-            return "add Practice fail!";
-        }
-
-        return "add Practice successful!";
+    public User addPractice(String uid) {
+//        try {
+//            User user = userRepository.findByUid(uid);
+//            user.setDailyPractice(user.getDailyPractice() + 1);
+//            user.setTotalPractice(user.getTotalPractice() + 1);
+//            userRepository.save(user);
+//        } catch (Exception e) {
+//            return "add Practice fail!";
+//        }
+//
+//        return "add Practice successful!";
+        User user = userRepository.findByUid(uid);
+        user.setDailyPractice(user.getDailyPractice() + 1);
+        user.setTotalPractice(user.getTotalPractice() + 1);
+        userRepository.save(user);
+        return user;
     }
 }
