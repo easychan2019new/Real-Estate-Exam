@@ -3,11 +3,11 @@ package com.alexande.realestateexam.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "user")
@@ -71,4 +71,9 @@ public class User {
     @OneToMany(mappedBy = "examOwner", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ExamData> examDataList = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<FamiliarQuestion> familiarQuestionList = new HashSet<>();
 }

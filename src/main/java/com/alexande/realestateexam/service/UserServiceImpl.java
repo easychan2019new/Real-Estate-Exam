@@ -176,23 +176,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User saveDictionary(String uid, Long did) {
+    public List<Dictionary> saveDictionary(String uid, Long did) {
         User user = userRepository.findByUid(uid);
         Dictionary dictionary = dictionaryRepository.findDictionaryById(did);
         if (!user.getDictionaryList().contains(dictionary)) {
             user.getDictionaryList().add(dictionary);
         }
         userRepository.save(user);
-        return user;
+        return user.getDictionaryList();
     }
 
     @Override
-    public User deleteDictionary(String uid, Long did) {
+    public List<Dictionary> deleteDictionary(String uid, Long did) {
         User user = userRepository.findByUid(uid);
         Dictionary dictionary = dictionaryRepository.findDictionaryById(did);
         user.getDictionaryList().remove(dictionary);
         userRepository.save(user);
-        return user;
+        return user.getDictionaryList();
     }
 
     @Override

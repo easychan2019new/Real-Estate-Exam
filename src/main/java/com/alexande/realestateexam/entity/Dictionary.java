@@ -1,10 +1,9 @@
 package com.alexande.realestateexam.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,18 +12,11 @@ import java.util.Set;
 public class Dictionary {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "word")
-    private String word;
-
-    @Column(name = "value")
-    private String value;
-
     @ManyToMany(mappedBy = "dictionaryList")
-    @JsonIgnore
+    @JsonBackReference
     Set<User> targetUser;
 
 }

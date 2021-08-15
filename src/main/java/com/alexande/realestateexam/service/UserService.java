@@ -22,8 +22,8 @@ public interface UserService {
     List<Long> getSavedQuestionId(String uid);
 
     // handle dictionary
-    User saveDictionary(String uid, Long did);
-    User deleteDictionary(String uid, Long did);
+    List<Dictionary> saveDictionary(String uid, Long did);
+    List<Dictionary> deleteDictionary(String uid, Long did);
     List<Dictionary> getSavedDictionary(String uid);
     List<Long> getSavedDictionaryId(String uid);
 

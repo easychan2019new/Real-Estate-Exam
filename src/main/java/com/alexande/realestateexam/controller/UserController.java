@@ -82,15 +82,17 @@ public class UserController {
     }
 
     @PostMapping("/saveDictionary")
-    public User saveDictionary(@RequestParam("uid") String uid,
+    public List<Long> saveDictionary(@RequestParam("uid") String uid,
                              @RequestParam("did") Long did) {
-        return userService.saveDictionary(uid, did);
+        userService.saveDictionary(uid, did);
+        return userService.getSavedDictionaryId(uid);
     }
 
     @PostMapping("/deleteDictionary")
-    public User deleteDictionary(@RequestParam("uid") String uid,
+    public List<Long> deleteDictionary(@RequestParam("uid") String uid,
                                @RequestParam("did") Long did) {
-        return userService.deleteDictionary(uid, did);
+        userService.deleteDictionary(uid, did);
+        return userService.getSavedDictionaryId(uid);
     }
 
     @GetMapping("/getSavedDictionary")

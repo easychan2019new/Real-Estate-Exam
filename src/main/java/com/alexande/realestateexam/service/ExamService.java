@@ -5,7 +5,6 @@ import com.alexande.realestateexam.entity.Exam;
 import com.alexande.realestateexam.entity.ExamData;
 import com.alexande.realestateexam.entity.ExamQuestion;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 

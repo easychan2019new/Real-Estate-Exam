@@ -24,4 +24,5 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     @Query(value = "SELECT * FROM question WHERE category_id = :#{#id} ORDER BY RAND() LIMIT 2", nativeQuery = true)
     List<Question> findByCategoryId(@Param("id") int id);
 
+    Question findQuestionById(Long id);
 }

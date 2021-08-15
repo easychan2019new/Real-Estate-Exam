@@ -31,12 +31,12 @@ public class ExamData {
     @Column(name = "score_high")
     private int highestScore;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User examOwner;
 
     @OneToMany(mappedBy = "examDataOwner", cascade = CascadeType.ALL)
-    @JsonIgnore
+    //@JsonIgnore
     private List<Exam> examList = new ArrayList<>();
 }
