@@ -42,4 +42,9 @@ public class QuestionController {
     public List<Question> findByCategoryId(@RequestParam("id") int id) {
         return questionService.findByCategoryId(id);
     }
+
+    @GetMapping("/findForCategory")
+    public List<Question> findForCategory(@RequestParam("id") int id) {
+        return questionService.findForCategory(id);
+    }
 }

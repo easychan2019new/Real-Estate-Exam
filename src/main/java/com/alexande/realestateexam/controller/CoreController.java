@@ -20,7 +20,7 @@ public class CoreController {
         return familiarQuestionService.addFamiliarQuestion(familiarity);
     }
 
-    @PostMapping("/findUserFamiliarQuestion")
+    @GetMapping("/findUserFamiliarQuestion")
     public List<FamiliarQuestion> findUserFamiliarQuestion(@RequestParam("uid") String uid,
                                                            @RequestParam("cid") Long cid) {
         return familiarQuestionService.findUserFamiliarQuestion(uid,cid);

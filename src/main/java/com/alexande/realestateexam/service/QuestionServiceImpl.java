@@ -36,8 +36,13 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public List<Question> findForCategory(int id) {
+        return questionRepository.findRandomByCategoryId(id);
+    }
+
+    @Override
     public List<Question> findByCategoryId(int id) {
-        return questionRepository.findByCategoryId(id);
+        return questionRepository.findQuestionByCategoryId(id);
     }
 
 //    @Override
