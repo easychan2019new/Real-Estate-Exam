@@ -18,6 +18,7 @@ public class UserController {
 
     @GetMapping("/findUser")
     public User findUser(@RequestParam("uid") String uid) {
+
         return userService.findUser(uid);
     }
 
@@ -44,9 +45,21 @@ public class UserController {
         return userService.updateExamStartDate(uid, examDate);
     }
 
+    @PutMapping("/updateUserMembership")
+    public User updateUserMembership(@RequestParam("uid") String uid,
+                                        @RequestParam("membership") String membership) {
+        return userService.updateUserMembership(uid, membership);
+    }
+
     @PutMapping("/setNullExamStartDate")
     public User setNullExamStartDate(@RequestParam("uid") String uid) {
         return userService.setNullExamStartDate(uid);
+    }
+
+    @PutMapping("/setUserNotification")
+    public User setUserNotification(@RequestParam("uid") String uid,
+                                        @RequestParam("token") String token) {
+        return userService.setUserNotification(uid, token);
     }
 
     @PostMapping("/addPractice")

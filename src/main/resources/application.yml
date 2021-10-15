@@ -1,0 +1,21 @@
+#spring
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://real-estate-db.cilk6yufvc4j.us-east-2.rds.amazonaws.com:3306/real-estate-db?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: realestate
+    password: realestate
+  #jpa
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  #api base path
+  data:
+    rest:
+      base-path: /api
+
+#firebase
+firebase:
+  credential:
+    resource-path: serviceAccountKey.json

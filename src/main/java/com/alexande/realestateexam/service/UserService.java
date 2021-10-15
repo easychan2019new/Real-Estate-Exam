@@ -13,7 +13,9 @@ public interface UserService {
     User updatePracticeStartDate(String uid, String practiceStartDate);
     User setNullPracticeStartDate(String uid);
     User updateExamStartDate(String uid, String examStartDate);
+    User updateUserMembership(String uid, String membership);
     User setNullExamStartDate(String uid);
+    User setUserNotification(String uid, String token);
 
     // handle question
     User saveQuestion(String uid, int qid);

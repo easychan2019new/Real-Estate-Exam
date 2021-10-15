@@ -18,7 +18,7 @@ public class User {
     private Long id;
 
     @Column(name = "membership")
-    private boolean membership;
+    private String membership;
 
     @Column(name = "daily_practice")
     private int dailyPractice;
@@ -43,6 +43,9 @@ public class User {
 
     @Column(name = "total_study_day")
     private int totalStudyDay;
+
+    @Column(name = "token")
+    private String token;
 
     @Column(name = "uid", nullable = false)
     private String uid;

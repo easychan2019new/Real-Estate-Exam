@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
         user.setPracticeStartDate(date);
         user.setExamStartDate(date);
         user.setRegisterDate(new Date());
-        user.setMembership(false);
+        user.setMembership("1");
 
         userRepository.save(user);
         return user;
@@ -122,6 +122,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User updateUserMembership(String uid, String membership) {
+        User user = userRepository.findByUid(uid);
+        user.setMembership(membership);
+        userRepository.save(user);
+        return user;
+    }
+
+    @Override
     public User setNullExamStartDate(String uid) {
         User user = userRepository.findByUid(uid);
 
@@ -134,6 +142,14 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
         user.setExamStartDate(date);
+        userRepository.save(user);
+        return user;
+    }
+
+    @Override
+    public User setUserNotification(String uid, String token) {
+        User user = userRepository.findByUid(uid);
+        user.setToken(token);
         userRepository.save(user);
         return user;
     }
